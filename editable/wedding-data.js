@@ -118,5 +118,6 @@ window.WEDDING_DATA = {
     roses: "./editable/assets/roses.png",
     daisies: "./editable/assets/daisies.png",
     divider: "./editable/assets/divider.png",
+    ogImage: "./editable/assets/og-image.jpg",
   },
 };
