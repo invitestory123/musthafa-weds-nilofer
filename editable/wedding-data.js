@@ -120,4 +120,9 @@ window.WEDDING_DATA = {
     divider: "./editable/assets/divider.png",
     ogImage: "./editable/assets/og-image.jpg",
   },
+
+  music: {
+    track: "./editable/assets/bg-music.mp3",
+    title: "Sai Pallavi Intro Bgm (Amaran)",
+  },
 };

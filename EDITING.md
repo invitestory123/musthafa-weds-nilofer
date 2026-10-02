@@ -56,11 +56,12 @@ Edit `closing` in `editable/wedding-data.js`:
 - `instagram` & `instagramUrl`: Instagram handle and URL
 
 ### Photos & Media Assets
-Replace files directly in `editable/assets/` or update paths in `images`:
+Replace files directly in `editable/assets/` or update paths in `images` and `music`:
 - Groom photo: `editable/assets/groom.jpg`
 - Bride photo: `editable/assets/bride.jpg`
 - Venue map: `editable/assets/map.jpg`
 - Floral & background accents: `hero-bg.jpg`, `roses.png`, `daisies.png`, `mandala.png`, `divider.png`
+- Background music: `editable/assets/bg-music.mp3` (configured in `music.track`)
 
 ---
 
