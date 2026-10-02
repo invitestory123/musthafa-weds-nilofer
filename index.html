@@ -35,8 +35,67 @@
     <script src="./editable/wedding-data.js"></script>
     <script type="module" crossorigin src="./assets/index-BFujBVD8.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/styles-BBCSj1GG.css">
+    <style>
+      /* Decorative flowers removed */
+      img[src*="roses.png"],
+      img[src*="daisies.png"],
+      .float-slow {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Background Music Audio & Autoplay Trigger -->
+    <audio id="wedding-bg-audio" loop preload="auto" playsinline src="./editable/assets/bg-music.mp3"></audio>
+    <script>
+      (function() {
+        var audio = document.getElementById('wedding-bg-audio');
+        if (!audio) return;
+        if (window.WEDDING_DATA && window.WEDDING_DATA.music && window.WEDDING_DATA.music.track) {
+          audio.src = window.WEDDING_DATA.music.track;
+        }
+        audio.volume = 0.7;
+        window._weddingAudio = audio;
+
+        function startMusic() {
+          if (!audio.paused) return;
+          var p = audio.play();
+          if (p !== undefined) {
+            p.then(function() {
+              removeListeners();
+            }).catch(function() {
+              // Browser policy waiting for user interaction
+            });
+          }
+        }
+
+        var evts = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'wheel', 'keydown'];
+        function onInteract() {
+          startMusic();
+        }
+        function removeListeners() {
+          evts.forEach(function(e) {
+            window.removeEventListener(e, onInteract, true);
+            document.removeEventListener(e, onInteract, true);
+          });
+        }
+        evts.forEach(function(e) {
+          window.addEventListener(e, onInteract, { passive: true, capture: true });
+          document.addEventListener(e, onInteract, { passive: true, capture: true });
+        });
+
+        // Attempt playback immediately when invitation opens
+        startMusic();
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', startMusic);
+        }
+        window.addEventListener('load', startMusic);
+      })();
+    </script>
   </body>
 </html>
